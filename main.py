@@ -96,22 +96,20 @@ if st.session_state.pagina == "inicio":
                     
                     df.index = df.index + 1
                     df = df.rename_axis("Iteración")
-                    st.dataframe(df, use_container_width = True)                
+                    st.dataframe(df, use_container_width = True)      
+                    
+                with col1:
+                    st.divider()
+                    st.header("2. Genera")
+                    if st.button("Ir a Chi Cuadrada"):
+                        st.session_state.pagina = "Resolver"
+                        st.rerun()  # Recarga la página           
 
             else:
                 st.error("Recuerda que la semilla debe tener un número de dígitos pares y mayor a 0, y las iteraciones deben ser mayores a 0.")
         except ValueError:
             st.error("Por favor, ingresa valores numéricos válidos para la semilla y las iteraciones.")
-            
-            
-    with col1:
-        if iteraciones_input:
-            st.divider()
-            st.header("2. Genera")
-            if st.button("Ir a Chi Cuadrada"):
-                st.session_state.pagina = "Resolver"
-                st.rerun()  # Recarga la página 
-                        
+                          
 # Página de resolución
 elif st.session_state.pagina == "Resolver":
 
